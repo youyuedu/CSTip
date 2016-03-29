@@ -1,0 +1,34 @@
+{
+  "name": "CSTip",
+  "version": "1.0",
+  "summary": "Empty view Tip",
+  "description": "Empty view Tip",
+  "homepage": "https://github.com/youyuedu/CSTip",
+  "license": "MIT",
+  "authors": {
+    "winddpan": "winddpan@126.com"
+  },
+  "source": {
+    "git": "https://github.com/youyuedu/CSTip.git",
+    "tag": "1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "CSTip": [
+      "Pod/Assets/*.png"
+    ]
+  },
+  "frameworks": [
+    "UIKit",
+    "Foundation"
+  ],
+  "dependencies": {
+    "Aspects": [
+
+    ]
+  }
+}

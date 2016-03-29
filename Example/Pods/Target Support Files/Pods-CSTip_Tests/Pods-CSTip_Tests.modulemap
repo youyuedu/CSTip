@@ -1,0 +1,6 @@
+framework module Pods_CSTip_Tests {
+  umbrella header "Pods-CSTip_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

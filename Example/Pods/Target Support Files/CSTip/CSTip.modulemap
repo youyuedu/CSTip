@@ -1,0 +1,6 @@
+framework module CSTip {
+  umbrella header "CSTip-umbrella.h"
+
+  export *
+  module * { export * }
+}

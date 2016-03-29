@@ -1,0 +1,6 @@
+framework module Pods_CSTip_Example {
+  umbrella header "Pods-CSTip_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

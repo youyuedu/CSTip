@@ -10,3 +10,6 @@ target 'CSTip_Tests', :exclusive => true do
 
   
 end
+
+
+pod 'Aspects'
