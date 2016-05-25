@@ -7,23 +7,23 @@
 #
 
 Pod::Spec.new do |s|
-    s.name         = "CSTip"
-    s.version      = "1.1"
-    s.summary      = "View Tip"
-    s.description  = <<-DESC
-                        Empty UITableView/UIView Tip
-                     DESC
+s.name         = "CSTip"
+s.version      = "1.2"
+s.summary      = "View Tip"
+s.description  = <<-DESC
+Empty UITableView/UIView Tip
+DESC
 
-  s.homepage     = "https://github.com/youyuedu/CSTip"
-  s.license      = 'MIT'
-  s.author       = { "winddpan" => "winddpan@126.com" }
-  s.source       = { :git => "https://github.com/youyuedu/CSTip.git", :tag => s.version.to_s }
+s.homepage     = "https://github.com/youyuedu/CSTip"
+s.license      = 'MIT'
+s.author       = { "winddpan" => "winddpan@126.com" }
+s.source       = { :git => "https://github.com/youyuedu/CSTip.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '7.0'
-  s.requires_arc = true
+s.platform     = :ios, '7.0'
+s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*.{h,m}'
+s.source_files = 'Pod/Classes/**/*.{h,m}'
 
-  s.frameworks = 'UIKit', 'Foundation'
-  s.dependency "Aspects"
+s.frameworks = 'UIKit', 'Foundation'
+s.dependency "Aspects"
 end

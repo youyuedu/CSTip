@@ -154,7 +154,8 @@ static const NSString *CSEmptyTipKey = @"CSEmptyTip";
             break;
         }
     }
-    return (UIViewController *)responder;
+    UIViewController *viewController = (UIViewController *)responder;
+    return viewController;
 }
 
 @end
