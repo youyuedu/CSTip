@@ -20,7 +20,9 @@
     [super viewDidLoad];
     self.tableView.tableFooterView = [UIView new];
     
-    CSEmptyTipView *tip = [[CSEmptyTipView alloc] initWithTitle:@"this is title" detail:@"and this is long long long long long long long long detail" headerImage:nil];
+    CSEmptyTipView *tip = [[CSEmptyTipView alloc] initWithTitle:@"this is title"
+                                                         detail:@"and this is long long long long long long long long detail"
+                                                    headerImage:[UIImage imageNamed:@"check"]];
     [self.tableView setEmptyTipView:tip];
     
     [self.tableView showActivityIndicator];

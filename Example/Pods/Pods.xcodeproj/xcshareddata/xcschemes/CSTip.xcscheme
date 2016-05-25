@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E433CF938FF8B4ECCBCA7BD3'
+               BlueprintIdentifier = 'D5F50A99F68FE07D407A7332'
                BlueprintName = 'CSTip'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'CSTip.framework'>

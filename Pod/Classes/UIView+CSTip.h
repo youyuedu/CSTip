@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Aspects.h"
+#import <Aspects/Aspects.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

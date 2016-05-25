@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CSEmptyTipView : UIView
-
 @property (readonly, strong) UILabel *label;
 @property (readonly, strong) UIView *customView;
+@property (assign, nonatomic) CGPoint offset;
 
 - (instancetype)initWithCustomView:(UIView *)customView;
 

@@ -10,6 +10,9 @@
 
 @interface UIView (CSIndicatorTip)
 
+/**
+ *  Aslo disable UIRefreshControl if parent view controller has one
+ */
 - (void)showActivityIndicator;
 
 - (void)hideActivityIndicator;

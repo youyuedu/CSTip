@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name         = "CSTip"
-    s.version      = "1.0"
+    s.version      = "1.1"
     s.summary      = "View Tip"
     s.description  = <<-DESC
                         Empty UITableView/UIView Tip
@@ -22,10 +22,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'CSTip' => ['Pod/Assets/*.png']
-  }
+  s.source_files = 'Pod/Classes/**/*.{h,m}'
 
   s.frameworks = 'UIKit', 'Foundation'
   s.dependency "Aspects"

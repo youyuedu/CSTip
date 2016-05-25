@@ -1,8 +1,8 @@
 {
   "name": "CSTip",
-  "version": "1.0",
-  "summary": "Empty view Tip",
-  "description": "Empty view Tip",
+  "version": "1.1",
+  "summary": "View Tip",
+  "description": "Empty UITableView/UIView Tip",
   "homepage": "https://github.com/youyuedu/CSTip",
   "license": "MIT",
   "authors": {
@@ -10,18 +10,13 @@
   },
   "source": {
     "git": "https://github.com/youyuedu/CSTip.git",
-    "tag": "1.0"
+    "tag": "1.1"
   },
   "platforms": {
     "ios": "7.0"
   },
   "requires_arc": true,
-  "source_files": "Pod/Classes/**/*",
-  "resource_bundles": {
-    "CSTip": [
-      "Pod/Assets/*.png"
-    ]
-  },
+  "source_files": "Pod/Classes/**/*.{h,m}",
   "frameworks": [
     "UIKit",
     "Foundation"

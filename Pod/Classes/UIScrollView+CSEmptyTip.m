@@ -14,9 +14,9 @@
 #import "CSEmptyTipView.h"
 
 static void *CSReloadHookedContext  = &CSReloadHookedContext;
+static void *CSRefreshControlStashesContext  = &CSRefreshControlStashesContext;
 
 static const NSString *CSEmptyTipKey = @"CSEmptyTip";
-static const NSString *CSIndicatorKey = @"CSIndicator";
 
 @implementation UIScrollView (CSEmptyTip)
 
@@ -106,44 +106,37 @@ static const NSString *CSIndicatorKey = @"CSIndicator";
 #pragma mark - override UIView
 
 - (void)showActivityIndicator {
-    CSIndicatorTipView *indicatorView = (CSIndicatorTipView *)[self csit_tipViewForKey:CSIndicatorKey];
-    if (!indicatorView) {
-        indicatorView = [[CSIndicatorTipView alloc] init];
-        [self csit_setTipView:indicatorView forKey:CSIndicatorKey];
-    }
-    [indicatorView.indicator startAnimating];
-    [self csit_showTipViewForKey:CSIndicatorKey];
+    [super showActivityIndicator];
     
     if ([self respondsToSelector:@selector(et_reloadEmptyTip)]) {
         [self performSelector:@selector(et_reloadEmptyTip)];
     }
     
+    UIViewController *parentViewController = [self et_parentViewController];
     UIRefreshControl *refreshControl = [self et_refreshControl];
-    refreshControl.enabled = NO;
+    if (refreshControl && !objc_getAssociatedObject(self, CSRefreshControlStashesContext)) {
+        objc_setAssociatedObject(self, CSRefreshControlStashesContext, refreshControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [parentViewController performSelector:@selector(setRefreshControl:) withObject:nil];
+    }
 }
 
 - (void)hideActivityIndicator {
-    CSIndicatorTipView *indicatorView = (CSIndicatorTipView *)[self csit_tipViewForKey:CSIndicatorKey];
-    [indicatorView.indicator stopAnimating];
-    [self csit_hideTipViewForKey:CSIndicatorKey];
+    [super hideActivityIndicator];
     
     if ([self respondsToSelector:@selector(et_reloadEmptyTip)]) {
         [self performSelector:@selector(et_reloadEmptyTip)];
     }
     
-    UIRefreshControl *refreshControl = [self et_refreshControl];
-    refreshControl.enabled = YES;
+    UIViewController *parentViewController = [self et_parentViewController];
+    UIRefreshControl *refreshControl = objc_getAssociatedObject(self, CSRefreshControlStashesContext);
+    if ([refreshControl isKindOfClass:UIRefreshControl.class] && parentViewController && [parentViewController respondsToSelector:@selector(setRefreshControl:)]) {
+        [parentViewController performSelector:@selector(setRefreshControl:) withObject:refreshControl];
+        objc_setAssociatedObject(self, CSRefreshControlStashesContext, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
 }
 
 - (UIRefreshControl *)et_refreshControl {
-    UIResponder *responder = self;
-    while (![responder isKindOfClass:[UIViewController class]]) {
-        responder = [responder nextResponder];
-        if (nil == responder) {
-            break;
-        }
-    }
-    
+    UIViewController *responder = [self et_parentViewController];
     if (responder && [responder respondsToSelector:@selector(refreshControl)]) {
         UIRefreshControl *refreshControl = [responder performSelector:@selector(refreshControl)];
         if ([refreshControl isKindOfClass:UIRefreshControl.class]) {
@@ -151,6 +144,17 @@ static const NSString *CSIndicatorKey = @"CSIndicator";
         }
     }
     return nil;
+}
+
+- (UIViewController *)et_parentViewController {
+    UIResponder *responder = self;
+    while (![responder isKindOfClass:[UIViewController class]]) {
+        responder = [responder nextResponder];
+        if (nil == responder) {
+            break;
+        }
+    }
+    return responder;
 }
 
 @end
