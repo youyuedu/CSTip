@@ -147,7 +147,7 @@ static const NSString *CSEmptyTipKey = @"CSEmptyTip";
 }
 
 - (UIViewController *)et_parentViewController {
-    UIResponder *responder = self;
+    id responder = self;
     while (![responder isKindOfClass:[UIViewController class]]) {
         responder = [responder nextResponder];
         if (nil == responder) {
